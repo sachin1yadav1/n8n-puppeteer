@@ -49,7 +49,7 @@ app.get("/scrape", async (req, res) => {
     console.log("📜 Scrolling page...");
     for (let i = 0; i < 5; i++) {
       await page.evaluate(() => window.scrollBy(0, window.innerHeight));
-      await page.waitForTimeout(2000);
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // instead of waitForTimeout
     }
 
     console.log("✅ Scrape complete.");
