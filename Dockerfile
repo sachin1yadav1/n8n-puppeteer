@@ -20,3 +20,6 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 RUN npm install -g puppeteer
 
 USER node
+
+# ✅ Ensure container runs n8n correctly
+CMD ["n8n"]
