@@ -1,19 +1,19 @@
-version: "3.8"
-
 services:
   n8n:
     build: .
     ports:
       - "5678:5678"
     environment:
-      - N8N_PORT=5678
       - N8N_HOST=0.0.0.0
+      - N8N_PORT=5678
       - N8N_PROTOCOL=http
-      - WEBHOOK_URL=http://localhost:5678/
+      - NODE_ENV=production
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=admin
       - N8N_BASIC_AUTH_PASSWORD=SuperStrongPassword123
-      - GENERIC_TIMEZONE=Asia/Kolkata
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_RUNNERS_ENABLED=true
+      - DB_SQLITE_POOL_SIZE=2
     volumes:
       - ./data:/home/node/.n8n
-    restart: unless-stopped
+      - ./puppeteer-cache:/home/node/.cache/puppeteer
