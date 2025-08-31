@@ -11,6 +11,7 @@ RUN apk update && apk add --no-cache \
     ca-certificates \
     ttf-freefont \
     wget \
+    curl \
     xvfb
 
 # Puppeteer needs chromium path
@@ -19,7 +20,5 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 # Install Puppeteer globally
 RUN npm install -g puppeteer
 
+# Switch back to node user
 USER node
-
-# ✅ Ensure container runs n8n correctly
-CMD ["n8n"]
