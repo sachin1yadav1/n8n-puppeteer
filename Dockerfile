@@ -2,7 +2,7 @@ FROM n8nio/n8n:latest
 
 USER root
 
-# Install Chromium & Puppeteer dependencies (Alpine packages)
+# Install Chromium & Puppeteer dependencies (Alpine)
 RUN apk update && apk add --no-cache \
     chromium \
     nss \
@@ -13,10 +13,10 @@ RUN apk update && apk add --no-cache \
     wget \
     xvfb
 
-# Set the Chrome executable path (for Puppeteer)
+# Puppeteer needs chromium path
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
-# Install Puppeteer
+# Install Puppeteer globally
 RUN npm install -g puppeteer
 
 USER node
